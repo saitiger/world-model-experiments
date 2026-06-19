@@ -1,6 +1,6 @@
 # LongLive 2 Cookbook
 
-A prompting cookbook for **LongLive 2**, Reactor's multi-shot, text-to-video model you direct like a storyboard. This goes deeper than the [SKILL.md](../../skills/longlive-v2-prompts/SKILL.md) with worked storyboards, named recipes, and a mistake gallery. It covers **prompting only** — for SDK, auth, scheduling APIs, and frontend wiring, see the LongLive SKILL and the reactor-team examples.
+A prompting cookbook for **LongLive 2**, text-to-video model you direct like a storyboard. This goes deeper than the [SKILL.md](../../skills/longlive-v2-prompts/SKILL.md) with worked storyboards, named recipes, and a mistake gallery. It covers **prompting only** — for SDK, auth, scheduling APIs, and frontend wiring, see the LongLive SKILL and the reactor-team examples.
 
 ---
 
