@@ -1,6 +1,6 @@
 # SANA-Streaming Cookbook
 
-A prompting cookbook for **SANA-Streaming**, Reactor's real-time, streaming video-to-video editor. This goes deeper than the [SKILL.md](../../skills/sana-streaming-prompts/SKILL.md) with worked edit sequences, named recipes, and a mistake gallery. It covers **prompting only** — for SDK, the `camera`-track publish flow, webcam vs clip sources, and frontend wiring, see the SANA SKILL and the reactor-team examples.
+A prompting cookbook for **SANA-Streaming**, streaming video-to-video editor. This goes deeper than the [SKILL.md](../../skills/sana-streaming-prompts/SKILL.md) with worked edit sequences, named recipes, and a mistake gallery. It covers **prompting only** — for SDK, the `camera`-track publish flow, webcam vs clip sources, and frontend wiring, see the SANA SKILL and the reactor-team examples.
 
 ---
 
