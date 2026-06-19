@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/reactor/:path*",
-      "destination": "https://api.reactor.inc/:path*"
-    }
-  ]
-}
