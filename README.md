@@ -1,6 +1,8 @@
 # World Model Experiments
 
-Prompting skills, cookbooks, and runnable starter templates for [Reactor](https://reactor.inc)'s real-time video generation models — LingBot, Helios, LongLive v2, and SANA-Streaming.
+Prompting skills, cookbooks, and runnable starter templates for real-time video generation models — LingBot, Helios, LongLive v2, and SANA-Streaming.
+
+Currently all models hosted by [Reactor](https://reactor.inc)'s
 
 ---
 
