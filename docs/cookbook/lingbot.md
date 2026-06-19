@@ -1,6 +1,6 @@
 # LingBot Cookbook
 
-A prompting cookbook for **LingBot**, Reactor's real-time navigable world model. This goes deeper than the [SKILL.md](../../skills/lingbot-prompts/SKILL.md) with worked examples, named recipes, and a mistake gallery. It covers **prompting only** — for SDK, auth, and frontend wiring, see the LingBot SKILL and the reactor-team examples.
+A prompting cookbook for **LingBot**. This goes deeper than the [SKILL.md](../../skills/lingbot-prompts/SKILL.md) with worked examples, named recipes, and a mistake gallery. It covers **prompting only** — for SDK, auth, and frontend wiring, see the LingBot SKILL and the reactor-team examples.
 
 > **Starter template:** the `frontend/` LingBot navigate app (`navigate.html` + `src/navigate.js`) is the runnable reference for this model.
 
