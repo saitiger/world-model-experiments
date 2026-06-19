@@ -1,6 +1,6 @@
 # Helios Cookbook
 
-A prompting cookbook for **Helios**, Reactor's real-time, prompt-driven continuous video model. This goes deeper than the [SKILL.md](../../skills/helios-prompts/SKILL.md) with worked sequences, named recipes, and a mistake gallery. It covers **prompting only** — for SDK, auth, and frontend wiring, see the Helios SKILL and the reactor-team examples.
+A prompting cookbook for **Helios**, real-time, prompt-driven continuous video model. This goes deeper than the [SKILL.md](../../skills/helios-prompts/SKILL.md) with worked sequences, named recipes, and a mistake gallery. It covers **prompting only** — for SDK, auth, and frontend wiring, see the Helios SKILL and the reactor-team examples.
 
 ---
 
