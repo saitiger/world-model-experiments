@@ -12,7 +12,7 @@ Currently, all models are hosted by [Reactor](https://reactor.inc)
 | --- | --- |
 | [`skills/`](skills/) | Agent context files (SKILL.md) — the rules each model needs injected into an AI agent's system prompt to produce good output |
 | [`docs/cookbook/`](docs/cookbook/) | Deep prompting guides — worked examples, named recipes, mistake galleries, checklists |
-| [`starter-kit/`](starter-kit/) | Runnable app templates — clone, add your API key, build on top |
+| [`experiments/`](experiments/) | Runnable app templates — clone, add your API key, build on top |
 
 ---
 
@@ -33,12 +33,12 @@ Currently, all models are hosted by [Reactor](https://reactor.inc)
 
 **Read the cookbooks** — start here if you're writing prompts by hand. Each cookbook has a worked example, named recipes for common patterns, and a mistakes table.
 
-**Run a template** — see [`starter-kit/README.md`](starter-kit/README.md). Two templates ship today:
+**Run a template** — see [`experiments/README.md`](experiments/README.md). Two templates ship today:
 
 | Template | Model | Stack |
 | --- | --- | --- |
-| [`starter-kit/reactor-dragon/`](starter-kit/reactor-dragon/) | LingBot | Next.js 15 + TypeScript |
-| [`starter-kit/helios-snap/`](starter-kit/helios-snap/) | Helios | React + Vite |
+| [`experiments/reactor-dragon/`](experiments/reactor-dragon/) | LingBot | Next.js 15 + TypeScript |
+| [`experiments/helios-snap/`](experiments/helios-snap/) | Helios | React + Vite |
 
 ---
 

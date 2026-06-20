@@ -32,7 +32,7 @@ world-model-experiments/
 │   ├── longlive-v2.md
 │   └── sana-streaming.md
 │
-└── starter-kit/                       ← runnable app templates
+└── experiments/                       ← runnable app templates
     ├── README.md                      ← run steps + customization points
     ├── reactor-dragon/                ← LingBot template (Next.js 15 + TypeScript)
     └── helios-snap/                   ← Helios template (React + Vite)
@@ -74,7 +74,7 @@ Ask the user what they want to produce, then match to the right model:
 - **Alignment check:** text ↔ image ↔ current movement command. All three must agree or output degrades.
 - **Skill:** `skills/lingbot-prompts/SKILL.md`
 - **Cookbook:** `docs/cookbook/lingbot.md`
-- **Template:** `starter-kit/reactor-dragon/` (Next.js 15 + TypeScript)
+- **Template:** `experiments/reactor-dragon/` (Next.js 15 + TypeScript)
 
 ### Helios — continuous prompt-steered stream
 - **Use when:** open-ended generative video, ambient visuals, art installations, image-to-video animation
@@ -85,7 +85,7 @@ Ask the user what they want to produce, then match to the right model:
 - **Style rule:** name the style once in the opening prompt. In follow-ups, reinforce with embedded atmospheric cues, never re-declare.
 - **Skill:** `skills/helios-prompts/SKILL.md`
 - **Cookbook:** `docs/cookbook/helios.md`
-- **Template:** `starter-kit/helios-snap/` (React + Vite; photo → style transfer → Helios animate → record)
+- **Template:** `experiments/helios-snap/` (React + Vite; photo → style transfer → Helios animate → record)
 
 ### LongLive v2 — multi-shot storyboard
 - **Use when:** short films, product demos, narrative sequences, text-to-video with structured scenes
@@ -123,11 +123,11 @@ Read `docs/cookbook/<model>.md`. It has:
 - A mistakes table — check the user's first prompt attempt against this
 
 ### Step 3 — Start with a template (if one exists)
-If the user's model has a starter template in `starter-kit/`, point them at it:
-- **LingBot** → `starter-kit/reactor-dragon/` — customize `app/lib/scenes.ts` and `public/images/`
-- **Helios** → `starter-kit/helios-snap/` — customize `ANIMATE_PROMPT` and the Gemini style prompt in `src/App.jsx`
+If the user's model has a starter template in `experiments/`, point them at it:
+- **LingBot** → `experiments/reactor-dragon/` — customize `app/lib/scenes.ts` and `public/images/`
+- **Helios** → `experiments/helios-snap/` — customize `ANIMATE_PROMPT` and the Gemini style prompt in `src/App.jsx`
 
-Read `starter-kit/README.md` for run steps and the full list of customization points.
+Read `experiments/README.md` for run steps and the full list of customization points.
 
 ### Step 4 — Write the first prompt together
 Apply the skill rules to whatever the user describes. If their idea is vague, ask for:
@@ -150,7 +150,7 @@ For follow-up prompts, apply the model's iteration rules from the skill:
 
 | Model | Must read | Also useful |
 | --- | --- | --- |
-| LingBot | `skills/lingbot-prompts/SKILL.md` | `docs/cookbook/lingbot.md`, `starter-kit/reactor-dragon/app/lib/scenes.ts` |
-| Helios | `skills/helios-prompts/SKILL.md` | `docs/cookbook/helios.md`, `starter-kit/helios-snap/src/App.jsx` |
+| LingBot | `skills/lingbot-prompts/SKILL.md` | `docs/cookbook/lingbot.md`, `experiments/reactor-dragon/app/lib/scenes.ts` |
+| Helios | `skills/helios-prompts/SKILL.md` | `docs/cookbook/helios.md`, `experiments/helios-snap/src/App.jsx` |
 | LongLive v2 | `skills/longlive-v2-prompts/SKILL.md` | `docs/cookbook/longlive-v2.md` |
 | SANA-Streaming | `skills/sana-streaming-prompts/SKILL.md` | `docs/cookbook/sana-streaming.md` |
