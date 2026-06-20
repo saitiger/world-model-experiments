@@ -2,7 +2,7 @@
 
 Prompting skills, cookbooks, and runnable starter templates for real-time video generation models — LingBot, Helios, LongLive v2, and SANA-Streaming.
 
-Currently all models hosted by [Reactor](https://reactor.inc)'s
+Currently, all models are hosted by [Reactor](https://reactor.inc)
 
 ---
 
