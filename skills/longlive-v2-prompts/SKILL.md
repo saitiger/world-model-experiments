@@ -39,7 +39,11 @@ Each shot caption is ~300 tokens of complete English sentences in **present tens
 [Paragraph 5 — ACTION]     Motion, interactions, and camera movement for this shot.
 ```
 
-Write each paragraph as flowing prose. Paragraph 5 is the only one that changes meaningfully between shots in the same scene — that's where the new beat lives.
+Write each paragraph as **flowing prose — never terse phrases**. "Terse prompts produce visibly weaker video." A full paragraph 5 covers: subject, action, setting+time, lighting-by-effect, lens+camera move, color palette+texture, render cue.
+
+Paragraph 5 is the only one that changes meaningfully between shots in the same scene — that's where the new beat lives. Paragraphs 1–4 stay stable.
+
+**Text-only**: LongLive 2 has no reference-image input in this release. Prose is the only medium for both content and continuity.
 
 ## Continuity across shots (the #1 quality lever)
 

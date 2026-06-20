@@ -28,11 +28,20 @@ Every start prompt follows this exact order:
 
 **Subject**: Not "a lion" but "a majestic lion named Leo." Include name, posture, clothing, key features.
 
-**Environment**: Not "a table" but "a wooden dining table." Include specific props and background.
+**Environment (3 layers)**: Near (ground level / immediate surroundings), Mid (focal elements), Far (backdrop/horizon). All three give depth and prevent a flat background.
 
-**Lighting anchor**: Be specific — "warm afternoon sunlight streaming through linen curtains," not just "daylight." This exact description repeats in every follow-up.
+**Lighting anchor**: Describe by its *effect on surfaces*, not by label. "Dappled sunlight filtering through the canopy, illuminating golden hues" — not "good lighting" or "bright." This exact description repeats in every follow-up.
 
-**Camera instruction**: This line is copied VERBATIM to every prompt in the sequence. Lock shot type, angle, and focus.
+**Camera instruction**: Copied VERBATIM to every prompt. Lock shot type, angle, and focus. Available shot types:
+- Close-up · Medium close-up · Medium shot · Wide shot
+- Tracking shot · Static shot · Aerial shot
+- Add motion modifier: "slow pullback," "smooth tracking shot," "slight pan and pullback"
+
+**Style (when used)**: Name the style **once** in the opening prompt only. In follow-ups, reinforce with embedded atmospheric cues — don't re-declare. Example: open with "90s VHS-style"; later write "VHS static buzzes louder, distorting his face" — not "90s VHS-style weather scene."
+
+## Token budget
+
+**Hard cap: 512 tokens.** Quality degrades noticeably past ~500 tokens. Verify with the [token playground](https://video-prompt-tokens-playground.vercel.app/) before finalizing. Prompt changes only take effect at chunk boundaries (~33 frames per chunk) — space follow-ups to give each beat adequate screen time.
 
 ## Follow-Up Prompt Structure
 
@@ -111,15 +120,19 @@ Choose one to structure the sequence.
 - Use temporal connectors to signal changes
 - Track progressive state changes across prompts
 - Introduce objects with action verbs (picks up, pulls out, grabs)
+- Name style once in the opening prompt; reinforce in follow-ups with embedded cues, not re-declarations
+- Describe light by how it transforms surfaces ("amber glow washes across the dashboard"), not by label ("good lighting")
+- Explicitly name what shouldn't appear ("no people," "cloudless sky") — omission alone doesn't remove elements
 
 **DON'T:**
 
 - Change lighting dramatically (no dawn → noon transitions)
 - Stack multiple new actions in one prompt
 - Modify the camera instruction between prompts
-- Let subjects interact with dangerous elements in motion
+- Write vague or generic descriptions — use concrete textures, materials, spatial relationships
 - Introduce objects without describing how they appear
 - Skip environmental reaction descriptions
+- Re-declare the full style in every follow-up — embed style cues in the atmosphere instead
 
 ## Checklist
 

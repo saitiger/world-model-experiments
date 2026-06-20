@@ -21,6 +21,29 @@ Positional language is fine (*"rear view," "subject centered in frame," "low-ang
 | "Tracking shot following a knight down a hall."  | "A torch-lit stone corridor with a knight ahead, banners stirring in the draft."     |
 | "Pull back to reveal a desert city at sunset."   | "A walled desert city under late-amber light, dust thermals climbing the curtain wall." |
 
+## Three-way alignment rule
+
+All three simultaneous inputs must agree with each other. Conflict between any pair degrades output:
+
+| Pair | Rule |
+| ---- | ---- |
+| **Text ↔ Image** | The prompt must match what the seed image actually shows. If the image shows a desert canyon, the prompt must describe a desert canyon — not a snowy forest. |
+| **Text ↔ Action** | Motion in the prompt must align with the current `set_movement` / `set_look_*` commands. A prompt saying "the vehicle rolls forward" while `movement = "idle"` creates a split the model can't resolve. |
+| **Text ↔ Text** | No two layers within the same assembled prompt should contradict each other. Base says "overcast sky" → event can't say "the sun breaks through." Rewrite the conflicting fragment entirely. |
+
+Before firing any prompt, run: *does the text match the image? does the text match the controls? are there internal conflicts?*
+
+## Subject-entity constraint
+
+**Subjects in the base prompt must not be given their own autonomous motion.** The viewer's WASD controls imply forward motion; adding a moving entity competes.
+
+| ❌ Wrong | ✅ Right |
+| -------- | -------- |
+| "A dog walking down a country lane" | "A border collie in tall summer grass, a country lane running through the field" |
+| "A horse galloping across the plains" | "A bay horse on open plains, mountains on the far horizon" |
+
+The subject can exist in the scene — it just can't be independently moving toward a destination.
+
 ## Traversal mode vs. spectator mode
 
 Pick by asking: *is the viewer the entity in the scene, or watching the entity?*
@@ -119,9 +142,10 @@ A hold-prompt is a **complete alternative scene description**, mirroring the bas
 ## Runtime caveats (affect how a prompt plays out)
 
 - **Context length ~300 chunks.** The model drifts back toward the seed image over long sessions. Plan scene transitions around that rather than fighting it.
-- **A/D camera displacement.** W+S plus arrow-key look is the best-supported scheme. Heavy strafing displaces the camera off a centered subject — keep strafes brief or design around forward motion.
+- **Movement stability.** `W` (forward) is the most reliable direction. Lateral strafing (`A`/`D`) is worst-case and can displace the camera off a centered subject — route direction changes through forward + heading turn (`W` + look left/right) rather than pure strafe.
 - **Orbiting support varies by subject.** Horses/cars orbit cleanly under look-input; boats/dragons may not. Prototype with the seed before committing to free 360° look.
-- **Character budget ~2000 chars** (T5-XXL encoder; silently truncates beyond ~512 tokens). Well-anchored prompts sit at 500–900 chars. If you approach the ceiling, drop redundant subject descriptions before cutting spatial anchors.
+- **Character budget ~2000 chars** (umt5-xxl encoder; hard cap ~512 tokens). Well-anchored prompts sit at 500–900 chars. If you approach the ceiling, drop redundant subject descriptions before cutting spatial anchors. Use the [token playground](https://video-prompt-tokens-playground.vercel.app/) to verify.
+- **Idle drift.** Extended periods with the same prompt and no control input cause drift. Fire periodic `set_prompt` refreshes or movement inputs on long idle sessions.
 
 ## Checklist
 

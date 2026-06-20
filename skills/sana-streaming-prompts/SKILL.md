@@ -23,16 +23,44 @@ Here the source already supplies subject, motion, geometry, and timing. Your pro
 
 ## Structure of a good edit instruction
 
-Two clauses, in this order:
+Strong instructions run 2–5 sentences with these components in order:
 
-```
-[WHAT CHANGES]  The transformation: style, lighting, color, added/removed elements, material swaps.
-[WHAT STAYS]    (when it matters) The source attributes to preserve: subject identity, motion, framing, composition.
-```
+1. **Target identification** — disambiguate with specific attributes ("the white button-up shirt," not "the shirt")
+2. **New content details** — 2–4 concrete specifics: material, color, silhouette, texture. More than 4 adjectives degrades results.
+3. **Material physics clause** — describe how the new content behaves under the *existing* light ("the silk catches and reflects the warm golden lamp light with a subtle sheen")
+4. **Fixed elements enumeration** — name what stays unchanged: "preserve the subject's pose, body and head motion, her identity, the background, and the scene's depth of field and lighting"
+5. **Temporal consistency** — for whole-frame edits, assert "seamless temporal consistency across all frames"
 
-- **Lead with the change.** "Make the water turn to molten gold," "Recolor the jacket deep crimson," "Apply a 1970s film look with heavy grain."
-- **Name what to preserve when an edit risks eating it.** A style transfer that might dissolve a face → add "keep the person's facial features and expression intact." A recolor that might bleed → "change only the jacket; leave skin and background unchanged."
-- **One coherent edit at a time.** Multiple unrelated changes in one prompt compete and the result collapses toward one of them. Stack changes over time with mid-stream re-prompts instead.
+Rules:
+- **One edit per prompt.** Split combined instructions into separate prompts.
+- **Match motion claims to the footage.** "Perfectly still" only if footage is static; otherwise use "preserve existing motion."
+- **Name what stays** — the model preserves only what you explicitly enumerate. "Keep everything else the same" is too vague.
+
+## Seven edit recipes
+
+| Recipe | When to use | Key pattern |
+| --- | --- | --- |
+| **Remove** | Delete objects, watermarks, blemishes | Name target → describe how to reconstruct the revealed area → "no trace" |
+| **Replace** | Swap garments, objects, subjects | Old → new with ≤4 details → material physics clause → enumerate what's preserved |
+| **Add** | Overlay new tracked elements | Element description → location → movement → tracking assertion |
+| **Background** | Change setting behind a preserved subject | New background elements → hold foreground subject → match lighting |
+| **Style** | Repaint in an art style | Name style → visual characteristics (strokes, palette, outlines) → preserve motion/composition |
+| **Scene transform** | Rebuild scene in a new medium | List objects to convert → target medium → add period artifacts → preserve original timing |
+| **Physical AI** | Restyle driving/robotics footage | Describe new look → preserve domain invariants (road geometry, lane markings, motion) |
+
+## Examples (verbatim from official prompt guide)
+
+**Remove:**
+> "Remove the white 'GagaOOLala' watermark logo in the top-left corner. Seamlessly blend the region with the surrounding sky, foliage, and building edges, with temporally consistent inpainting."
+
+**Replace (garment):**
+> "Replace the white button-up shirt with a dark navy silk blouse featuring a draped ruffled collar and iridescent pearl buttons. Ensure the silk catches and reflects the warm golden lamp light with a subtle sheen throughout the sequence. Preserve the subject's pose, body and head motion, her identity, the background, and the scene's depth of field and lighting."
+
+**Style:**
+> "Apply a Fauvist painting style with electric blues, greens, and oranges, thick brushstrokes, bold outlines, and flat saturated color blocks. Preserve all original motion, actions, camera movement, and composition, with seamless temporal consistency and no jarring frames."
+
+**Background:**
+> "Replace the background with a rain-streaked windowpane at dusk, with out-of-focus teal and amber city lights, condensation, and raindrops trickling down the glass. Keep a shallow depth of field, do not alter the subject's lighting or appearance, and maintain seamless consistency across all frames."
 
 ## Mid-stream re-prompting
 
@@ -54,7 +82,9 @@ Over long runs, a continuously re-edited stream can drift away from the source. 
 
 **DO:**
 - Treat the prompt as an **edit instruction** — name the change, not the whole scene.
-- Lead with what changes; add what to preserve when the edit might destroy it.
+- Use specific target attributes ("the white button-up shirt," not "the shirt").
+- Add a material physics clause ("the silk catches the warm golden lamp light").
+- Enumerate the axes to preserve — the model only preserves what you name.
 - Keep each prompt to **one coherent edit**.
 - Sequence multiple edits over time with mid-stream `set_prompt` deltas.
 - Expect a ~one-chunk delay before a new prompt lands.
@@ -63,9 +93,11 @@ Over long runs, a continuously re-edited stream can drift away from the source. 
 **DON'T:**
 - Write a full scene description from scratch — the source already provides the scene.
 - Pack multiple unrelated changes into one prompt (they compete and collapse).
+- Use more than 4 adjectives for new content details — adjective pileup degrades results.
 - Restate the entire edit on every mid-stream change — phrase later prompts as deltas.
-- Expect an instant change — it applies at the next chunk boundary.
-- Describe motion/timing the source already supplies unless you intend to change it.
+- Claim the footage is "perfectly still" if it isn't — match motion claims to actual footage.
+- Rely on "keep everything else the same" — enumerate the specific axes instead.
+- Describe scene-from-scratch — rephrase as an edit ("Apply a neon cyberpunk look" not "A neon cyberpunk city").
 
 ## Checklist
 
